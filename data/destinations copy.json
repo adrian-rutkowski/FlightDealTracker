@@ -1,0 +1,34 @@
+[
+    {
+        "fly_from": "WRO,WAW,BER",
+        "fly_to": "NYC",
+        "stay_min": 6,
+        "stay_max": 10,
+        "acceptable_price": 2000,
+        "ret_to_diff_city": true,
+        "max_stopovers": 2
+    },
+    {
+        "fly_from": "KTW,KRK,WAW,POZ",
+        "fly_to": "DXB,SHJ,AUH",
+        "stay_min": 5,
+        "stay_max": 7,
+        "acceptable_price": 12000,
+        "ret_to_diff_city": true,
+        "max_stopovers": 0,
+        "ret_from_diff_city": true,
+        "date_from": "01/11/2024",
+        "date_to": "25/02/2025"
+    },
+    {
+        "fly_from": "GDN,WAW,BER,KTW,KRK",
+        "fly_to": "KEF",
+        "stay_min": 4,
+        "stay_max": 7,
+        "acceptable_price": 12000,
+        "ret_to_diff_city": true,
+        "max_stopovers": 0,
+        "date_from": "01/07/2024",
+        "date_to": "30/09/2024"
+    }
+]

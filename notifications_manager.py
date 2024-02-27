@@ -14,7 +14,6 @@ class NotificationsManager:
         response = client.publish(PhoneNumber=constants.MY_PHONE_NUMBER,
                                   Message=message)
 
-        # print(response)
         assert response['ResponseMetadata']['HTTPStatusCode'] == 200
     
     def notify_about_deal(self, deal: TripModel):
@@ -22,5 +21,5 @@ class NotificationsManager:
             if row.code == deal.airline:
                 airline = row.name
         msg =  f"{deal.fly_from} to {deal.fly_to} on {deal.departure_date} with {airline}. {deal.length_of_stay} nights for {deal.price} PLN. More details here: {deal.url}"
-        # print(msg)
+        print(msg)
         self.send_text_message(message=msg)

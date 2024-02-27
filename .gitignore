@@ -1,2 +1,6 @@
 __pycache__
 data/stored_deals.xlsx
+.venv
+lambda_function.py
+lambda_layer.zip
+aws_deployment.zip

@@ -8,8 +8,8 @@ class DestinationModel:
     stay_min: int
     stay_max: int
     acceptable_price: int
-    ret_to_diff_city: bool
-    max_stopovers: int
+    ret_to_diff_city: Optional[bool] = None
+    max_stopovers: Optional[int] = None
     ret_from_diff_city: Optional[bool] = None
     date_from: Optional[str] = None
     date_to: Optional[str] = None

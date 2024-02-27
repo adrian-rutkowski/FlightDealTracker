@@ -18,9 +18,13 @@ def check_deals():
             if deal.price < destination.acceptable_price:
                 nm.notify_about_deal(deal=deal)
                 dm.store_deal_details(deal=deal)
+            else:
+                print(f'No deals to {deal.fly_to} found below the threshold of {destination.acceptable_price} PLN')
         except requests.HTTPError as e:
             print(e)
             print(response.json())
+        except IndexError as e:
+            print(f"No deals to {destination.fly_to} found.")
 
 if __name__ == "__main__":
     check_deals()

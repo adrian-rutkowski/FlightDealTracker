@@ -50,19 +50,20 @@ class DataManager():
                         url=self.shorten_url(trip['deep_link'])
                         )
     
-
     def prepare_params(self, destination: DestinationModel):
-        params = {'fly_from': destination.fly_from,
+        params = {
+            'fly_from': destination.fly_from,
             'fly_to': destination.fly_to,
-            'date_from': destination.date_from if not None else constants.DATE_FROM,
-            'date_to': destination.date_to if not None else constants.DATE_TO,
+            'date_from': destination.date_from if destination.date_from is not None else constants.DATE_FROM,
+            'date_to': destination.date_to if destination.date_to is not None else constants.DATE_TO,
             'nights_in_dst_from': destination.stay_min,
             'nights_in_dst_to': destination.stay_max,
-            'ret_from_diff_city': destination.ret_from_diff_city if not None else False,
-            'ret_to_diff_city':  destination.ret_to_diff_city if not None else False,
-            'max_stopovers': destination.max_stopovers if not None else 0,
+            'ret_from_diff_city': destination.ret_from_diff_city if destination.ret_from_diff_city is not None else False,
+            'ret_to_diff_city':  destination.ret_to_diff_city if destination.ret_to_diff_city is not None else False,
+            'max_stopovers': destination.max_stopovers if destination.max_stopovers is not None else 0,
             'adults': 1,
             'curr': 'PLN',
             'sort': 'price',
-            'limit': 10}
+            'limit': 10
+        }
         return params

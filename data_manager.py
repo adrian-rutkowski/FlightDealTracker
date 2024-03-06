@@ -1,6 +1,5 @@
 from datetime import datetime
 import json
-import pyshorteners
 import constants
 
 from openpyxl import load_workbook
@@ -34,12 +33,7 @@ class DataManager():
         sheet.cell(row=next_row, column=4).value = deal.url
 
         workbook.save('data/stored_deals.xlsx')
-    
-    def shorten_url(self, long_url):
-        type_tiny = pyshorteners.Shortener()
-        short_url = type_tiny.tinyurl.short(long_url)
-        return short_url
-    
+
     def get_trip(self, trip):
         return TripModel(fly_from=f"{trip['cityFrom']} {trip['flyFrom']}", 
                         fly_to=f"{trip['cityTo']} {trip['flyTo']}",
@@ -47,7 +41,7 @@ class DataManager():
                         length_of_stay=trip['nightsInDest'],
                         price=trip['price'],
                         airline=trip['airlines'][0],
-                        url=self.shorten_url(trip['deep_link'])
+                        url=trip['deep_link']
                         )
     
     def prepare_params(self, destination: DestinationModel):

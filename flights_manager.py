@@ -30,28 +30,23 @@ class FlightsManager:
 
 
     def check_azair(self, destination: DestinationModel):
-        # Send a GET request to the URL
         search = dm.prepare_azair_url(destination=destination)
         response = requests.get(constants.AZAIR_URL+search)
-        # Check if the request was successful (status code 200)
+
         if response.status_code == 200:
             try:
-                # Parse the HTML content of the page using BeautifulSoup
                 soup = BeautifulSoup(response.content, 'html.parser')
-                
-                # Find the main <div> element with class "list" and id "reslist"
-                main_div = soup.find('div', {'class': 'list', 'id': 'reslist'})
-                
-                # Find the first <div> element with class "text" inside the main <div>
-                text_div = main_div.find('div', {'class': 'text'})
+                top_record = soup.find('div', {'class': 'result'})
+                data = top_record.find('div', {'class': 'text'})
                 
                 deal = TripModel()
-                deal.departure_date = text_div.find('span', class_='date').text
-                deal.fly_from = text_div.find_all('span', class_='from')[0].text.strip().split()[-1]
-                deal.fly_to = text_div.find_all('span', class_='to')[0].text.strip().split()[-1]
-                deal.price = int(''.join(filter(str.isdigit, text_div.find('div', class_='totalPrice').find('span', class_='tp').text)))
-                deal.length_of_stay = text_div.find('div', class_='totalPrice').find('span', class_='lengthOfStay').text.split(':')[-1].strip()
-                deal.url = main_div.find('div', {'class': 'result'}).find('div', class_='bookmark').find('a')['href'].replace("¤", "&curren")
+                deal.departure_date = data.find('span', class_='date').text
+                deal.fly_from = ' '.join(data.find('span', class_='from').get_text().split()[1:3])
+                deal.fly_to = f"{data.find('span', class_='to').text.split(' ')[1]} {data.find('span', class_='to').find('span', class_='code').text[:3]}"
+
+                deal.price = int(''.join(filter(str.isdigit, data.find('div', class_='totalPrice').find('span', class_='tp').text)))
+                deal.length_of_stay = data.find('div', class_='totalPrice').find('span', class_='lengthOfStay').text.split(':')[-1].strip()
+                deal.url = top_record.find('div', class_='bookmark').find('a')['href'].replace("¤", "&curren")
                 
                 if deal.price < destination.acceptable_price:
                     message = f"AZAIR: {deal.fly_from} to {deal.fly_to} on {deal.departure_date} for {deal.length_of_stay}. {deal.price} PLN.\nMore details here: {nm.shorten_url(constants.AZAIR_URL+deal.url)}"

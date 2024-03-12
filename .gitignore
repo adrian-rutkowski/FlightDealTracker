@@ -4,4 +4,4 @@ data/stored_deals.xlsx
 lambda_function.py
 lambda_layer.zip
 aws_deployment.zip
-data/destinations.json
+data/*

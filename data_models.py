@@ -18,12 +18,12 @@ class DestinationModel:
 
 @dataclass
 class TripModel:
-    fly_from: str
-    fly_to: str
-    departure_date: str
-    length_of_stay: int
-    price: int
-    airline: str
+    fly_from: Optional[str] = None
+    fly_to: Optional[str] = None
+    departure_date: Optional[str] = None
+    length_of_stay: Optional[int] = None
+    price: Optional[int] = None
+    airline: Optional[str] = None
     url: Optional[str] = None
 
 @dataclass

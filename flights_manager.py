@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import constants
 from data_manager import DataManager
-from data_models import DestinationModel
+from data_models import DestinationModel, TripModel
 from notifications_manager import NotificationsManager
 
 dm = DataManager()
@@ -45,18 +45,19 @@ class FlightsManager:
                 # Find the first <div> element with class "text" inside the main <div>
                 text_div = main_div.find('div', {'class': 'text'})
                 
-                departure_date = text_div.find('span', class_='date').text
-                departure_location = text_div.find_all('span', class_='from')[0].text.strip().split()[-1]
-                arrival_location = text_div.find_all('span', class_='to')[0].text.strip().split()[-1]
-                price = int(''.join(filter(str.isdigit, text_div.find('div', class_='totalPrice').find('span', class_='tp').text)))
-                length_of_stay = text_div.find('div', class_='totalPrice').find('span', class_='lengthOfStay').text.split(':')[-1].strip()
-                url = main_div.find('div', {'class': 'result'}).find('div', class_='bookmark').find('a')['href'].replace("¤", "&curren")
+                deal = TripModel()
+                deal.departure_date = text_div.find('span', class_='date').text
+                deal.fly_from = text_div.find_all('span', class_='from')[0].text.strip().split()[-1]
+                deal.fly_to = text_div.find_all('span', class_='to')[0].text.strip().split()[-1]
+                deal.price = int(''.join(filter(str.isdigit, text_div.find('div', class_='totalPrice').find('span', class_='tp').text)))
+                deal.length_of_stay = text_div.find('div', class_='totalPrice').find('span', class_='lengthOfStay').text.split(':')[-1].strip()
+                deal.url = main_div.find('div', {'class': 'result'}).find('div', class_='bookmark').find('a')['href'].replace("¤", "&curren")
                 
-                if price < destination.acceptable_price:
-                    message = f"AZAIR: {departure_location} to {arrival_location} on {departure_date} for {length_of_stay}. {price} PLN.\nMore details here: {nm.shorten_url(constants.AZAIR_URL+url)}"
+                if deal.price < destination.acceptable_price:
+                    message = f"AZAIR: {deal.fly_from} to {deal.fly_to} on {deal.departure_date} for {deal.length_of_stay}. {deal.price} PLN.\nMore details here: {nm.shorten_url(constants.AZAIR_URL+deal.url)}"
                     print(message)
                 else:
-                    print(f'AZAIR: No deals to {destination.fly_to} found below the threshold of {destination.acceptable_price} PLN')
+                    print(f'AZAIR: No deals to {deal.fly_to} found below the threshold of {destination.acceptable_price} PLN')
             except AttributeError:
                 print(f"AZAIR: No deals to {destination.fly_to} found.")
         else:

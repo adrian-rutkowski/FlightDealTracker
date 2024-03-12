@@ -1,11 +1,11 @@
 from datetime import datetime
 import json
-import constants
-
-from openpyxl import load_workbook
 
 from data_models import AirlineModel, DestinationModel, TripModel
+from urllib.parse import urlencode
 
+
+from data_models import DestinationModel
 
 class DataManager():
 
@@ -20,19 +20,6 @@ class DataManager():
             data = json.load(file)
             airlines = [AirlineModel(code=code, name=name) for code, name in data.items()]
             return airlines
-    
-    def store_deal_details(self, deal):
-        workbook = load_workbook('data/stored_deals.xlsx')
-        sheet = workbook['Sheet1']
-        next_row = sheet.max_row + 1
-
-        # Writing data to the cells
-        sheet.cell(row=next_row, column=1).value = constants.TODAY
-        sheet.cell(row=next_row, column=2).value = deal.fly_to 
-        sheet.cell(row=next_row, column=3).value = deal.price
-        sheet.cell(row=next_row, column=4).value = deal.url
-
-        workbook.save('data/stored_deals.xlsx')
 
     def get_trip(self, trip):
         return TripModel(fly_from=f"{trip['cityFrom']} {trip['flyFrom']}", 
@@ -44,20 +31,60 @@ class DataManager():
                         url=trip['deep_link']
                         )
     
-    def prepare_params(self, destination: DestinationModel):
+    def prepare_kiwi_params(self, destination: DestinationModel):
         params = {
             'fly_from': destination.fly_from,
             'fly_to': destination.fly_to,
-            'date_from': destination.date_from if destination.date_from is not None else constants.DATE_FROM,
-            'date_to': destination.date_to if destination.date_to is not None else constants.DATE_TO,
+            'date_from': destination.date_from,
+            'date_to': destination.date_to,
             'nights_in_dst_from': destination.stay_min,
             'nights_in_dst_to': destination.stay_max,
-            'ret_from_diff_city': destination.ret_from_diff_city if destination.ret_from_diff_city is not None else False,
-            'ret_to_diff_city':  destination.ret_to_diff_city if destination.ret_to_diff_city is not None else False,
-            'max_stopovers': destination.max_stopovers if destination.max_stopovers is not None else 0,
+            'ret_from_diff_city': destination.ret_from_diff_city,
+            'ret_to_diff_city':  destination.ret_to_diff_city,
+            'max_stopovers': destination.max_stopovers,
             'adults': 1,
             'curr': 'PLN',
             'sort': 'price',
             'limit': 10
         }
         return params
+    
+    def prepare_airport_codes(self, airport_codes):
+        # Split the airport codes by comma
+        airport_codes_list = airport_codes.split(',')
+
+        # If there's only one airport code, return it as is
+        if len(airport_codes_list) == 1:
+            return f"[{airport_codes_list[0]}]"
+        else:
+            # Join the additional airport codes with comma and wrap in parentheses
+            additional_airports = ','.join(airport_codes_list[1:])
+            additional_airports = f'(+{additional_airports})'
+
+            # Return the main airport code wrapped in square brackets and
+            # concatenated with additional airports
+            return f'[{airport_codes_list[0]}] {additional_airports}'
+
+    def prepare_azair_url(self, destination: DestinationModel):
+
+        parameters = {
+        'searchtype': 'flexi',
+        'srcAirport': self.prepare_airport_codes(destination.fly_from),
+        'dstAirport': self.prepare_airport_codes(destination.fly_to),
+        'adults': 1,
+        'depdate': destination.date_from.replace('/', '.'),
+        'arrdate': destination.date_to.replace('/', '.'),
+        'minDaysStay': destination.stay_min+1,
+        'maxDaysStay': destination.stay_max+1,
+        'currency': 'PLN',
+        'samedep': not destination.ret_to_diff_city,
+        'samearr': not destination.ret_from_diff_city,
+        'maxChng': destination.max_stopovers,
+        'isOneway': 'return'
+}   
+
+        # Construct URL with parameters
+        url = 'azfin.php?' + urlencode(parameters)
+
+        # print(url)
+        return url

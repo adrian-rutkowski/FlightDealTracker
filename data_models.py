@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional
+import constants
 
 @dataclass
 class DestinationModel:
@@ -8,11 +9,11 @@ class DestinationModel:
     stay_min: int
     stay_max: int
     acceptable_price: int
-    ret_to_diff_city: Optional[bool] = None
-    max_stopovers: Optional[int] = None
-    ret_from_diff_city: Optional[bool] = None
-    date_from: Optional[str] = None
-    date_to: Optional[str] = None
+    max_stopovers: Optional[int] = 0
+    ret_to_diff_city: Optional[bool] = False
+    ret_from_diff_city: Optional[bool] = False
+    date_from: Optional[str] = constants.DATE_FROM
+    date_to: Optional[str] = constants.DATE_TO
 
 
 @dataclass

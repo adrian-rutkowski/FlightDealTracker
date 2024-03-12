@@ -39,13 +39,6 @@
     },
     {
         "fly_from": "WRO",
-        "fly_to": "SOF",
-        "stay_min": 2,
-        "stay_max": 4,
-        "acceptable_price": 400
-    },
-    {
-        "fly_from": "WRO",
         "fly_to": "SPU",
         "stay_min": 3,
         "stay_max": 14,
@@ -134,7 +127,7 @@
         "fly_to": "EIN",
         "stay_min": 3,
         "stay_max": 7,
-        "acceptable_price": 350
+        "acceptable_price": 310
     },
     {
         "fly_from": "WRO",

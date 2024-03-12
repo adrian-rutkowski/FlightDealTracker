@@ -28,4 +28,4 @@ class NotificationsManager:
                 airline = row.name
         msg =  f"{deal.fly_from} to {deal.fly_to} on {deal.departure_date} with {airline}. {deal.length_of_stay} nights for {deal.price} PLN. More details here: {self.shorten_url(deal.url)}"
         print(msg)
-        self.send_text_message(message=msg)
+        # self.send_text_message(message=msg)

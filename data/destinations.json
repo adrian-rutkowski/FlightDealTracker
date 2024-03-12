@@ -6,7 +6,7 @@
         "stay_max": 10,
         "acceptable_price": 1500,
         "ret_to_diff_city": true,
-        "max_stopovers": 1
+        "max_stopovers": 2
     },
     {
         "fly_from": "KTW,KRK,WAW,POZ,BER",

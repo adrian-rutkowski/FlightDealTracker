@@ -14,7 +14,6 @@ class FlightsManager:
         params = dm.prepare_kiwi_params(destination=destination)
         try:
             response = requests.get(url=f"{constants.KIWI_URL}/search", headers={'apikey': constants.KIWI_API_KEY}, params=params)
-            print(response.status_code)
             response.raise_for_status()
             trip = response.json()['data'][0]
             deal = dm.get_trip(trip=trip)

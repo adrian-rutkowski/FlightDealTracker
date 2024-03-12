@@ -14,6 +14,7 @@ class DestinationModel:
     ret_from_diff_city: Optional[bool] = False
     date_from: Optional[str] = constants.DATE_FROM
     date_to: Optional[str] = constants.DATE_TO
+    only_kiwi: Optional[bool] = False
 
 
 @dataclass

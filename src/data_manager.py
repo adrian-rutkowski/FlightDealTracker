@@ -9,7 +9,7 @@ from data_models import DestinationModel
 
 class DataManager():
 
-    def get_destinations_data(self, file_path='data/destinations.json'):
+    def get_destinations_data(self, file_path='src/data/destinations.json'):
         with open(file_path, 'r') as file:
             data = json.load(file)
             destinations = [DestinationModel(**destination) for destination in data]

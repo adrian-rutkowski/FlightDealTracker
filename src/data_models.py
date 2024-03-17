@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import Optional
 import constants
 
+
 @dataclass
 class DestinationModel:
     fly_from: str
@@ -26,6 +27,7 @@ class TripModel:
     price: Optional[int] = None
     airline: Optional[str] = None
     url: Optional[str] = None
+
 
 @dataclass
 class AirlineModel:

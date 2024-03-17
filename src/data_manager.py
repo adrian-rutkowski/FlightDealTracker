@@ -5,32 +5,33 @@ from data_models import AirlineModel, DestinationModel, TripModel
 from urllib.parse import urlencode
 
 
-from data_models import DestinationModel
-
 class DataManager():
 
     def get_destinations_data(self, file_path='src/data/destinations.json'):
         with open(file_path, 'r') as file:
             data = json.load(file)
-            destinations = [DestinationModel(**destination) for destination in data]
+            destinations = [DestinationModel(
+                **destination) for destination in data]
             return destinations
-        
-    def get_airlines_data(self, file_path='data/airlines.json'):
+
+    def get_airlines_data(self, file_path='src/data/airlines.json'):
         with open(file_path, 'r') as file:
             data = json.load(file)
-            airlines = [AirlineModel(code=code, name=name) for code, name in data.items()]
+            airlines = [AirlineModel(code=code, name=name)
+                        for code, name in data.items()]
             return airlines
 
     def get_trip(self, trip):
-        return TripModel(fly_from=f"{trip['cityFrom']} {trip['flyFrom']}", 
-                        fly_to=f"{trip['cityTo']} {trip['flyTo']}",
-                        departure_date=datetime.strptime(trip['local_departure'], '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%d/%m/%Y'),
-                        length_of_stay=trip['nightsInDest'],
-                        price=trip['price'],
-                        airline=trip['airlines'][0],
-                        url=trip['deep_link']
-                        )
-    
+        return TripModel(fly_from=f"{trip['cityFrom']} {trip['flyFrom']}",
+                         fly_to=f"{trip['cityTo']} {trip['flyTo']}",
+                         departure_date=datetime.strptime(
+                             trip['local_departure'], '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%d/%m/%Y'),
+                         length_of_stay=trip['nightsInDest'],
+                         price=trip['price'],
+                         airline=trip['airlines'][0],
+                         url=trip['deep_link']
+                         )
+
     def prepare_kiwi_params(self, destination: DestinationModel):
         params = {
             'fly_from': destination.fly_from,
@@ -48,7 +49,7 @@ class DataManager():
             'limit': 10
         }
         return params
-    
+
     def prepare_airport_codes(self, airport_codes):
         # Split the airport codes by comma
         airport_codes_list = airport_codes.split(',')
@@ -68,20 +69,20 @@ class DataManager():
     def prepare_azair_url(self, destination: DestinationModel):
 
         parameters = {
-        'searchtype': 'flexi',
-        'srcAirport': self.prepare_airport_codes(destination.fly_from),
-        'dstAirport': self.prepare_airport_codes(destination.fly_to),
-        'adults': 1,
-        'depdate': destination.date_from.replace('/', '.'),
-        'arrdate': destination.date_to.replace('/', '.'),
-        'minDaysStay': destination.stay_min+1,
-        'maxDaysStay': destination.stay_max+1,
-        'currency': 'PLN',
-        'samedep': not destination.ret_to_diff_city,
-        'samearr': not destination.ret_from_diff_city,
-        'maxChng': destination.max_stopovers,
-        'isOneway': 'return'
-}   
+            'searchtype': 'flexi',
+            'srcAirport': self.prepare_airport_codes(destination.fly_from),
+            'dstAirport': self.prepare_airport_codes(destination.fly_to),
+            'adults': 1,
+            'depdate': destination.date_from.replace('/', '.'),
+            'arrdate': destination.date_to.replace('/', '.'),
+            'minDaysStay': destination.stay_min+1,
+            'maxDaysStay': destination.stay_max+1,
+            'currency': 'PLN',
+            'samedep': not destination.ret_to_diff_city,
+            'samearr': not destination.ret_from_diff_city,
+            'maxChng': destination.max_stopovers,
+            'isOneway': 'return'
+        }
 
         # Construct URL with parameters
         url = 'azfin.php?' + urlencode(parameters)

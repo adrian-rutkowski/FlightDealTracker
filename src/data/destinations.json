@@ -14,7 +14,7 @@
         "fly_to": "DXB,SHJ,AUH,DWC",
         "stay_min": 5,
         "stay_max": 7,
-        "acceptable_price": 1000,
+        "acceptable_price": 800,
         "ret_to_diff_city": true,
         "ret_from_diff_city": true,
         "date_from": "01/11/2024",
@@ -42,57 +42,71 @@
     {
         "fly_from": "WRO",
         "fly_to": "SPU",
+        "stay_min": 14,
+        "stay_max": 28,
+        "acceptable_price": 400
+    },
+    {
+        "fly_from": "WRO",
+        "fly_to": "SPU",
         "stay_min": 3,
-        "stay_max": 14,
+        "stay_max": 4,
         "acceptable_price": 400
     },
     {
         "fly_from": "WRO",
         "fly_to": "LCA",
-        "stay_min": 3,
-        "stay_max": 14,
+        "stay_min": 14,
+        "stay_max": 28,
         "acceptable_price": 350
     },
     {
         "fly_from": "WRO",
         "fly_to": "RHO",
         "stay_min": 3,
-        "stay_max": 14,
+        "stay_max": 9,
         "acceptable_price": 400
     },
     {
         "fly_from": "WRO",
         "fly_to": "ARN",
-        "stay_min": 2,
+        "stay_min": 3,
         "stay_max": 3,
-        "acceptable_price": 400
+        "acceptable_price": 200
     },
     {
         "fly_from": "WRO",
         "fly_to": "ATH",
         "stay_min": 3,
         "stay_max": 7,
-        "acceptable_price": 350
+        "acceptable_price": 300
     },
     {
         "fly_from": "WRO",
         "fly_to": "PMO",
         "stay_min": 3,
-        "stay_max": 14,
-        "acceptable_price": 350
+        "stay_max": 7,
+        "acceptable_price": 300
+    },
+    {
+        "fly_from": "WRO",
+        "fly_to": "PMO",
+        "stay_min": 14,
+        "stay_max": 28,
+        "acceptable_price": 300
     },
     {
         "fly_from": "WRO",
         "fly_to": "BRI",
         "stay_min": 3,
-        "stay_max": 14,
+        "stay_max": 9,
         "acceptable_price": 300
     },
     {
         "fly_from": "WRO",
         "fly_to": "FCO,CIA",
         "ret_to_diff_city": true,
-        "stay_min": 3,
+        "stay_min": 4,
         "stay_max": 7,
         "acceptable_price": 350
     },
@@ -100,43 +114,50 @@
         "fly_from": "WRO",
         "fly_to": "BLQ",
         "stay_min": 3,
-        "stay_max": 14,
-        "acceptable_price": 350
+        "stay_max": 9,
+        "acceptable_price": 300
     },
     {
         "fly_from": "WRO",
         "fly_to": "BCN",
         "stay_min": 3,
         "stay_max": 7,
-        "acceptable_price": 350
+        "acceptable_price": 300
     },
     {
         "fly_from": "WRO",
         "fly_to": "VLC",
         "stay_min": 3,
-        "stay_max": 14,
-        "acceptable_price": 350
+        "stay_max": 7,
+        "acceptable_price": 300
+    },
+    {
+        "fly_from": "WRO",
+        "fly_to": "VLC",
+        "stay_min": 14,
+        "stay_max": 28,
+        "acceptable_price": 300
     },
     {
         "fly_from": "WRO",
         "fly_to": "DBV",
-        "stay_min": 2,
+        "stay_min": 3,
         "stay_max": 4,
-        "acceptable_price": 350
+        "acceptable_price": 300
     },
     {
         "fly_from": "WRO",
         "fly_to": "EIN",
         "stay_min": 3,
         "stay_max": 7,
-        "acceptable_price": 310
+        "acceptable_price": 300
     },
     {
         "fly_from": "WRO",
         "fly_to": "BVA",
         "stay_min": 3,
         "stay_max": 4,
-        "acceptable_price": 350
+        "acceptable_price": 300
     },
     {
         "fly_from": "POZ,WAW,KTW,BER",
@@ -149,7 +170,7 @@
     {
         "fly_from": "WAW,KRK,BER",
         "fly_to": "IST,SAW",
-        "stay_min": 3,
+        "stay_min": 4,
         "stay_max": 7,
         "acceptable_price": 500,
         "ret_to_diff_city": true,
@@ -159,7 +180,7 @@
         "fly_from": "WAW,BER",
         "fly_to": "HND,NRT",
         "stay_min": 12,
-        "stay_max": 25,
+        "stay_max": 28,
         "acceptable_price": 3000,
         "ret_to_diff_city": true,
         "max_stopovers": 1,

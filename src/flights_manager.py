@@ -3,6 +3,7 @@ import requests
 import constants
 from data_manager import DataManager
 from data_models import DestinationModel, TripModel
+from enums import DataSource
 from notifications_manager import NotificationsManager
 
 dm = DataManager()
@@ -21,7 +22,7 @@ class FlightsManager:
             trip = response.json()['data'][0]
             deal = dm.get_trip(trip=trip)
             if deal.price < destination.acceptable_price:
-                nm.notify_about_deal(deal=deal)
+                nm.notify_about_deal(source=DataSource.KIWI, deal=deal)
             else:
                 print(
                     f'KIWI: No deals to {deal.fly_to} found below the threshold of {destination.acceptable_price} PLN')
@@ -56,10 +57,7 @@ class FlightsManager:
                     'href'].replace("¤", "&curren")
 
                 if deal.price < destination.acceptable_price:
-                    message = (f"AZAIR: {deal.fly_from} to {deal.fly_to} on {deal.departure_date} "
-                               f"for {deal.length_of_stay}. {deal.price} PLN. "
-                               f"More details here: {nm.shorten_url(constants.AZAIR_URL+deal.url)}")
-                    print(message)
+                    nm.notify_about_deal(source=DataSource.AZAIR, deal=deal)
                 else:
                     print(
                         (f'AZAIR: No deals to {deal.fly_to} found below the threshold '

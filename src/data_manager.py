@@ -7,14 +7,14 @@ from urllib.parse import urlencode
 
 class DataManager():
 
-    def get_destinations_data(self, file_path='src/data/destinations.json'):
+    def get_destinations_data(self, file_path='data/destinations.json'):
         with open(file_path, 'r') as file:
             data = json.load(file)
             destinations = [DestinationModel(
                 **destination) for destination in data]
             return destinations
 
-    def get_airlines_data(self, file_path='src/data/airlines.json'):
+    def get_airlines_data(self, file_path='data/airlines.json'):
         with open(file_path, 'r') as file:
             data = json.load(file)
             airlines = [AirlineModel(code=code, name=name)

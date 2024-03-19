@@ -122,7 +122,7 @@
         "fly_to": "BLQ",
         "stay_min": 7,
         "stay_max": 14,
-        "acceptable_price": 300
+        "acceptable_price": 220
     },
     {
         "fly_from": "WRO",
@@ -164,7 +164,7 @@
         "fly_to": "BVA",
         "stay_min": 3,
         "stay_max": 4,
-        "acceptable_price": 300
+        "acceptable_price": 280
     },
     {
         "fly_from": "POZ,WAW,KTW,BER",

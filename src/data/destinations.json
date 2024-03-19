@@ -71,7 +71,7 @@
         "fly_from": "WRO",
         "fly_to": "ARN",
         "stay_min": 3,
-        "stay_max": 3,
+        "stay_max": 4,
         "acceptable_price": 200
     },
     {
@@ -114,7 +114,14 @@
         "fly_from": "WRO",
         "fly_to": "BLQ",
         "stay_min": 3,
-        "stay_max": 9,
+        "stay_max": 4,
+        "acceptable_price": 300
+    },
+    {
+        "fly_from": "WRO",
+        "fly_to": "BLQ",
+        "stay_min": 7,
+        "stay_max": 14,
         "acceptable_price": 300
     },
     {

@@ -84,8 +84,27 @@ class DataManager():
             'isOneway': 'return'
         }
 
+        if destination.stay_max < 7:
+            city_break_params = {'dep2': True,
+                                 'dep3': True,
+                                 'dep4': True,
+                                 'dep5': True,
+                                 'arr0': True,
+                                 'arr1': True,
+                                 'arr2': True,
+                                 'arr3': False,
+                                 'arr4': False,
+                                 'arr5': True,
+                                 'arr6': True,
+                                 'minHourOutbound': '7:00',
+                                 'maxHourOutbound': '17:00',
+                                 'minHourInbound': '7:00',
+                                 'maxHourInbound': '20:00'
+                                 }
+
+            parameters.update(city_break_params)
+
         # Construct URL with parameters
         url = 'azfin.php?' + urlencode(parameters)
 
-        # print(url)
         return url

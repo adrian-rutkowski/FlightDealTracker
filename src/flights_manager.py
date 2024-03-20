@@ -25,7 +25,8 @@ class FlightsManager:
                 nm.notify_about_deal(source=DataSource.KIWI, deal=deal)
             else:
                 print(
-                    f'KIWI: No deals to {deal.fly_to} found below the threshold of {destination.acceptable_price} PLN')
+                    f'KIWI: No deals to {deal.fly_to} found below the threshold of {destination.acceptable_price} PLN. '
+                    f'Lowest price is {deal.price} PLN')
         except requests.HTTPError as e:
             print(e)
             print(response.json())
@@ -60,8 +61,8 @@ class FlightsManager:
                     nm.notify_about_deal(source=DataSource.AZAIR, deal=deal)
                 else:
                     print(
-                        (f'AZAIR: No deals to {deal.fly_to} found below the threshold '
-                         f'of {destination.acceptable_price} PLN'))
+                        f'AZAIR: No deals to {deal.fly_to} found below the threshold '
+                        f'of {destination.acceptable_price} PLN. Lowest price is {deal.price} PLN')
             except AttributeError:
                 print(f"AZAIR: No deals to {destination.fly_to} found.")
         else:

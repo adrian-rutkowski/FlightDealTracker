@@ -55,10 +55,25 @@
     },
     {
         "fly_from": "WRO",
-        "fly_to": "LCA",
+        "fly_to": "LCA,PFO",
         "stay_min": 14,
         "stay_max": 28,
-        "acceptable_price": 350
+        "acceptable_price": 350,
+        "ret_from_diff_city": true
+    },
+    {
+        "fly_from": "WRO",
+        "fly_to": "TGD",
+        "stay_min": 14,
+        "stay_max": 28,
+        "acceptable_price": 300
+    },
+    {
+        "fly_from": "WRO",
+        "fly_to": "TIA",
+        "stay_min": 14,
+        "stay_max": 28,
+        "acceptable_price": 300
     },
     {
         "fly_from": "WRO",

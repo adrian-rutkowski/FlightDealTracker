@@ -2,8 +2,8 @@
     {
         "fly_from": "WRO,WAW,BER",
         "fly_to": "NYC",
-        "stay_min": 7,
-        "stay_max": 9,
+        "stay_min": 6,
+        "stay_max": 8,
         "acceptable_price": 1600,
         "ret_to_diff_city": true,
         "max_stopovers": 1,
@@ -21,16 +21,6 @@
         "date_to": "25/02/2025"
     },
     {
-        "fly_from": "WAW,BER,KTW,KRK,WRO",
-        "fly_to": "KEF",
-        "stay_min": 4,
-        "stay_max": 6,
-        "acceptable_price": 700,
-        "ret_to_diff_city": true,
-        "date_from": "01/07/2024",
-        "date_to": "30/09/2024"
-    },
-    {
         "fly_from": "WRO,WAW",
         "fly_to": "ICN",
         "stay_min": 6,
@@ -44,14 +34,7 @@
         "fly_to": "SPU",
         "stay_min": 14,
         "stay_max": 28,
-        "acceptable_price": 400
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "SPU",
-        "stay_min": 3,
-        "stay_max": 4,
-        "acceptable_price": 400
+        "acceptable_price": 350
     },
     {
         "fly_from": "WRO",
@@ -60,20 +43,6 @@
         "stay_max": 28,
         "acceptable_price": 350,
         "ret_from_diff_city": true
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "TGD",
-        "stay_min": 14,
-        "stay_max": 28,
-        "acceptable_price": 300
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "TIA",
-        "stay_min": 14,
-        "stay_max": 28,
-        "acceptable_price": 300
     },
     {
         "fly_from": "WRO",
@@ -93,34 +62,36 @@
         "fly_from": "WRO",
         "fly_to": "ATH",
         "stay_min": 3,
-        "stay_max": 7,
+        "stay_max": 4,
         "acceptable_price": 300
     },
     {
         "fly_from": "WRO",
-        "fly_to": "PMO",
+        "fly_to": "PMO,CTA",
         "stay_min": 3,
         "stay_max": 7,
-        "acceptable_price": 300
+        "acceptable_price": 300,
+        "ret_from_diff_city": true
     },
     {
         "fly_from": "WRO",
-        "fly_to": "PMO",
+        "fly_to": "PMO,CTA",
         "stay_min": 14,
         "stay_max": 28,
-        "acceptable_price": 300
+        "acceptable_price": 300,
+        "ret_from_diff_city": true
     },
     {
         "fly_from": "WRO",
         "fly_to": "BRI",
         "stay_min": 3,
-        "stay_max": 9,
+        "stay_max": 5,
         "acceptable_price": 300
     },
     {
         "fly_from": "WRO",
         "fly_to": "FCO,CIA",
-        "ret_to_diff_city": true,
+        "ret_from_diff_city": true,
         "stay_min": 4,
         "stay_max": 7,
         "acceptable_price": 350
@@ -129,7 +100,7 @@
         "fly_from": "WRO",
         "fly_to": "BLQ",
         "stay_min": 3,
-        "stay_max": 4,
+        "stay_max": 7,
         "acceptable_price": 300
     },
     {
@@ -195,6 +166,7 @@
         "stay_min": 4,
         "stay_max": 7,
         "acceptable_price": 500,
+        "ret_from_diff_city": true,
         "ret_to_diff_city": true,
         "max_stopovers": 1
     },
@@ -204,6 +176,7 @@
         "stay_min": 12,
         "stay_max": 28,
         "acceptable_price": 3000,
+        "ret_from_diff_city": true,
         "ret_to_diff_city": true,
         "max_stopovers": 1,
         "only_kiwi": true

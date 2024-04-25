@@ -30,9 +30,11 @@ class NotificationsManager:
         msg = None
         match source:
             case DataSource.KIWI:
+                airline = f"Unknown airline {deal.airline}"
                 for row in DataManager().get_airlines_data():
                     if row.code == deal.airline:
                         airline = row.name
+                        break
                 msg = (f"{source.value.upper()}: {deal.fly_from} to {deal.fly_to} on {deal.departure_date} with "
                        f"{airline}. {deal.length_of_stay} nights for {deal.price} PLN. "
                        f"{self.shorten_url(deal.url)}")

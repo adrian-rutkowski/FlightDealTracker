@@ -81,28 +81,25 @@ class DataManager():
             'samedep': not destination.ret_to_diff_city,
             'samearr': not destination.ret_from_diff_city,
             'maxChng': destination.max_stopovers,
-            'isOneway': 'return'
+            'isOneway': 'return',
+            'wizzxclub': True
         }
 
-        if destination.stay_max < 7:
-            city_break_params = {'dep2': True,
-                                 'dep3': True,
-                                 'dep4': True,
-                                 'dep5': True,
-                                 'arr0': True,
-                                 'arr1': True,
-                                 'arr2': True,
-                                 'arr3': False,
-                                 'arr4': False,
-                                 'arr5': True,
-                                 'arr6': True,
-                                 'minHourOutbound': '7:00',
-                                 'maxHourOutbound': '17:00',
-                                 'minHourInbound': '7:00',
-                                 'maxHourInbound': '20:00'
-                                 }
+        if destination.departure_days:
+            dep_params = {f'dep{i}': True for i, day in enumerate(
+                destination.departure_days) if day}
 
-            parameters.update(city_break_params)
+            parameters.update(dep_params)
+
+        if destination.return_days:
+            ret_params = {f'arr{i}': True for i,
+                          day in enumerate(destination.return_days) if day}
+
+            parameters.update(ret_params)
+
+        # Turn booleans into lower-case strings (as the URL is case sensitive)
+        parameters = {key: str(value).lower() if isinstance(
+            value, bool) else value for key, value in parameters.items()}
 
         # Construct URL with parameters
         url = 'azfin.php?' + urlencode(parameters)

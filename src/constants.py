@@ -8,5 +8,5 @@ AWS_ROOT_SECRET_ACCESS_KEY = os.environ.get("AWS_ROOT_SECRET_ACCESS_KEY")
 AWS_REGION_NAME = os.environ.get("AWS_REGION_NAME")
 MY_PHONE_NUMBER = os.environ.get("MY_PHONE_NUMBER")
 DATE_FROM = (datetime.today() + timedelta(days=30)).strftime('%d/%m/%Y')
-DATE_TO = (datetime.today() + timedelta(days=30*7)).strftime('%d/%m/%Y')
+DATE_TO = (datetime.today() + timedelta(days=30*4)).strftime('%d/%m/%Y')
 AZAIR_URL = 'https://www.azair.com/'

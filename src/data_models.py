@@ -1,5 +1,5 @@
-from dataclasses import dataclass
-from typing import Optional
+from dataclasses import dataclass, field
+from typing import List, Optional
 import constants
 
 
@@ -16,6 +16,8 @@ class DestinationModel:
     date_from: Optional[str] = constants.DATE_FROM
     date_to: Optional[str] = constants.DATE_TO
     only_kiwi: Optional[bool] = False
+    departure_days: Optional[List[bool]] = field(default_factory=list)
+    return_days: Optional[List[bool]] = field(default_factory=list)
 
 
 @dataclass

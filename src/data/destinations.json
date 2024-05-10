@@ -10,15 +10,15 @@
         "only_kiwi": true
     },
     {
-        "fly_from": "KTW,KRK,WAW,POZ,BER",
-        "fly_to": "DXB,SHJ,AUH,DWC",
-        "stay_min": 5,
-        "stay_max": 7,
-        "acceptable_price": 800,
-        "ret_to_diff_city": true,
+        "fly_from": "WAW,BER",
+        "fly_to": "HND,NRT",
+        "stay_min": 12,
+        "stay_max": 28,
+        "acceptable_price": 3000,
         "ret_from_diff_city": true,
-        "date_from": "01/11/2024",
-        "date_to": "25/02/2025"
+        "ret_to_diff_city": true,
+        "max_stopovers": 1,
+        "only_kiwi": true
     },
     {
         "fly_from": "WRO,WAW",
@@ -31,154 +31,65 @@
     },
     {
         "fly_from": "WRO",
-        "fly_to": "SPU",
-        "stay_min": 14,
-        "stay_max": 28,
-        "acceptable_price": 350
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "LCA,PFO",
-        "stay_min": 14,
-        "stay_max": 28,
-        "acceptable_price": 350,
-        "ret_from_diff_city": true
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "RHO",
-        "stay_min": 3,
-        "stay_max": 9,
-        "acceptable_price": 400
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "ARN",
-        "stay_min": 3,
-        "stay_max": 4,
-        "acceptable_price": 200
-    },
-    {
-        "fly_from": "WRO",
         "fly_to": "ATH",
-        "stay_min": 3,
+        "stay_min": 2,
         "stay_max": 4,
-        "acceptable_price": 300
+        "acceptable_price": 250,
+        "departure_days": [false, false, false, false, false, true, false],
+        "return_days": [false, true, false, false, false, false, false]
     },
     {
         "fly_from": "WRO",
-        "fly_to": "PMO,CTA",
+        "fly_to": "CIA",
+        "stay_min": 2,
+        "stay_max": 4,
+        "acceptable_price": 250,
+        "departure_days": [false, false, false, false, false, true, false],
+        "return_days": [false, true, false, false, false, false, false]
+    },
+    {
+        "fly_from": "WRO",
+        "fly_to": "PMO",
         "stay_min": 3,
         "stay_max": 7,
         "acceptable_price": 300,
-        "ret_from_diff_city": true
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "PMO,CTA",
-        "stay_min": 14,
-        "stay_max": 28,
-        "acceptable_price": 300,
-        "ret_from_diff_city": true
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "BRI",
-        "stay_min": 3,
-        "stay_max": 5,
-        "acceptable_price": 300
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "FCO,CIA",
-        "ret_from_diff_city": true,
-        "stay_min": 4,
-        "stay_max": 7,
-        "acceptable_price": 350
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "BLQ",
-        "stay_min": 3,
-        "stay_max": 7,
-        "acceptable_price": 300
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "BLQ",
-        "stay_min": 7,
-        "stay_max": 14,
-        "acceptable_price": 220
+        "departure_days": [false, false, true, false, false, false, false],
+        "return_days": [false, false, false, false, false, false, true]
     },
     {
         "fly_from": "WRO",
         "fly_to": "BCN",
-        "stay_min": 3,
-        "stay_max": 7,
-        "acceptable_price": 300
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "VLC",
-        "stay_min": 3,
-        "stay_max": 7,
-        "acceptable_price": 300
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "VLC",
-        "stay_min": 14,
-        "stay_max": 28,
-        "acceptable_price": 300
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "DBV",
-        "stay_min": 3,
+        "stay_min": 2,
         "stay_max": 4,
-        "acceptable_price": 300
+        "acceptable_price": 300,
+        "departure_days": [false, false, false, false, true, false, false],
+        "return_days": [true, false, false, false, false, false, false]
+    },
+    {
+        "fly_from": "WRO",
+        "fly_to": "VLC",
+        "stay_min": 2,
+        "stay_max": 5,
+        "acceptable_price": 300,
+        "departure_days": [false, false, true, true, false, false, false],
+        "return_days": [false, false, false, false, false, false, true]
     },
     {
         "fly_from": "WRO",
         "fly_to": "EIN",
-        "stay_min": 3,
-        "stay_max": 7,
-        "acceptable_price": 300
+        "stay_min": 2,
+        "stay_max": 5,
+        "acceptable_price": 250,
+        "departure_days": [false, false, false, false, false, true, false],
+        "return_days": [false, true, false, false, false, false, false]
     },
     {
         "fly_from": "WRO",
         "fly_to": "BVA",
-        "stay_min": 3,
+        "stay_min": 2,
         "stay_max": 4,
-        "acceptable_price": 280
-    },
-    {
-        "fly_from": "POZ,WAW,KTW,BER",
-        "fly_to": "TBS,KUT",
-        "stay_min": 3,
-        "stay_max": 7,
-        "ret_to_diff_city": true,
-        "acceptable_price": 400
-    },
-    {
-        "fly_from": "WAW,KRK,BER",
-        "fly_to": "IST,SAW",
-        "stay_min": 4,
-        "stay_max": 7,
-        "acceptable_price": 500,
-        "ret_from_diff_city": true,
-        "ret_to_diff_city": true,
-        "max_stopovers": 1
-    },
-    {
-        "fly_from": "WAW,BER",
-        "fly_to": "HND,NRT",
-        "stay_min": 12,
-        "stay_max": 28,
-        "acceptable_price": 3000,
-        "ret_from_diff_city": true,
-        "ret_to_diff_city": true,
-        "max_stopovers": 1,
-        "only_kiwi": true
+        "acceptable_price": 250,
+        "departure_days": [false, false, false, false, true, false, false],
+        "return_days": [true, false, false, false, false, false, false]
     }
 ]

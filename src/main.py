@@ -8,9 +8,10 @@ fm = FlightsManager()
 def check_deals():
     destinations = dm.get_destinations_data()
     for destination in destinations:
-        if destination.only_kiwi is False:
+        if destination.only_kiwi:
+            fm.check_kiwi(destination=destination)
+        else:
             fm.check_azair(destination=destination)
-        fm.check_kiwi(destination=destination)
 
 
 if __name__ == "__main__":

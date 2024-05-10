@@ -30,6 +30,16 @@
         "only_kiwi": true
     },
     {
+        "fly_from": "KTW,KRK",
+        "fly_to": "AUH",
+        "stay_min": 6,
+        "stay_max": 7,
+        "acceptable_price": 800,
+        "ret_to_diff_city": true,
+        "date_from": "01/11/2024",
+        "date_to": "25/02/2025"
+    },
+    {
         "fly_from": "WRO",
         "fly_to": "ATH",
         "stay_min": 2,

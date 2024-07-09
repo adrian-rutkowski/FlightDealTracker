@@ -9,7 +9,7 @@ class DestinationModel:
     fly_to: str
     stay_min: int
     stay_max: int
-    acceptable_price: int
+    target_price: int
     max_stopovers: Optional[int] = 0
     ret_to_diff_city: Optional[bool] = False
     ret_from_diff_city: Optional[bool] = False

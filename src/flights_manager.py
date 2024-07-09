@@ -21,11 +21,13 @@ class FlightsManager:
             response.raise_for_status()
             trip = response.json()['data'][0]
             deal = dm.get_trip(trip=trip)
-            if deal.price < destination.acceptable_price:
+            if deal.price < destination.target_price:
                 nm.notify_about_deal(source=DataSource.KIWI, deal=deal)
+                dm.update_target_price(
+                    fly_to=destination.fly_to, new_price=deal.price)
             else:
                 print(
-                    f'KIWI: No deals to {deal.fly_to} found below the threshold of {destination.acceptable_price} PLN. '
+                    f'KIWI: No deals to {deal.fly_to} found below the threshold of {destination.target_price} PLN. '
                     f'Lowest price is {deal.price} PLN')
         except requests.HTTPError as e:
             print(e)
@@ -57,12 +59,14 @@ class FlightsManager:
                 deal.url = top_record.find('div', class_='bookmark').find('a')[
                     'href'].replace("¤", "&curren")
 
-                if deal.price < destination.acceptable_price:
+                if deal.price < destination.target_price:
                     nm.notify_about_deal(source=DataSource.AZAIR, deal=deal)
+                    dm.update_target_price(
+                        fly_to=destination.fly_to, new_price=deal.price)
                 else:
                     print(
                         f'AZAIR: No deals to {deal.fly_to} found below the threshold '
-                        f'of {destination.acceptable_price} PLN. Lowest price is {deal.price} PLN')
+                        f'of {destination.target_price} PLN. Lowest price is {deal.price} PLN')
             except AttributeError:
                 print(f"AZAIR: No deals to {destination.fly_to} found.")
         else:

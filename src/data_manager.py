@@ -7,8 +7,10 @@ from urllib.parse import urlencode
 
 class DataManager():
 
-    def get_destinations_data(self, file_path='data/destinations.json'):
-        with open(file_path, 'r') as file:
+    destination_file_path = 'data/destinations.json'
+
+    def get_destinations_data(self):
+        with open(self.destination_file_path, 'r') as file:
             data = json.load(file)
             destinations = [DestinationModel(
                 **destination) for destination in data]
@@ -20,6 +22,22 @@ class DataManager():
             airlines = [AirlineModel(code=code, name=name)
                         for code, name in data.items()]
             return airlines
+
+    def update_target_price(self, fly_to, new_price):
+        # Load JSON data from file
+        with open(self.destination_file_path, 'r') as file:
+            data = json.load(file)
+
+        # Iterate through the list and find the item with matching fly_to
+        for item in data:
+            if item.get('fly_to') == fly_to:
+                # Update the target_price
+                item['target_price'] = new_price
+                break  # Exit loop once updated
+
+        # Write updated data back to the file
+        with open(self.destination_file_path, 'w') as file:
+            json.dump(data, file, indent=4)
 
     def get_trip(self, trip):
         return TripModel(fly_from=f"{trip['cityFrom']} {trip['flyFrom']}",

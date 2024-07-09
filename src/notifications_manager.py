@@ -6,6 +6,9 @@ import constants
 import pyshorteners
 
 from enums import DataSource
+from logger import Logger
+
+log = Logger()
 
 
 class NotificationsManager:
@@ -48,4 +51,5 @@ class NotificationsManager:
     def notify_about_deal(self, source: DataSource, deal: TripModel):
         msg = self.prepare_message_text(source=source, deal=deal)
         print(msg)
+        log.log_info(msg)
         # self.send_text_message(message=msg)

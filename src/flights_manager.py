@@ -4,10 +4,12 @@ import constants
 from data_manager import DataManager
 from data_models import DestinationModel, TripModel
 from enums import DataSource
+from logger import Logger
 from notifications_manager import NotificationsManager
 
 dm = DataManager()
 nm = NotificationsManager()
+log = Logger()
 
 
 class FlightsManager:
@@ -26,14 +28,19 @@ class FlightsManager:
                 dm.update_target_price(
                     fly_to=destination.fly_to, new_price=deal.price)
             else:
-                print(
-                    f'KIWI: No deals to {deal.fly_to} found below the threshold of {destination.target_price} PLN. '
-                    f'Lowest price is {deal.price} PLN')
+                msg = (f"KIWI: No deals to {deal.fly_to} found below the threshold of {destination.target_price} PLN. "
+                       f"Lowest price is {deal.price} PLN")
+                print(msg)
+                log.log_info(msg)
+
         except requests.HTTPError as e:
             print(e)
             print(response.json())
+            log.log_critical(e)
         except IndexError:
-            print(f"KIWI: No deals to {destination.fly_to} found.")
+            error_msg = f"KIWI: No deals to {destination.fly_to} found."
+            print(error_msg)
+            log.log_info(error_msg)
 
     def check_azair(self, destination: DestinationModel):
         search = dm.prepare_azair_url(destination=destination)
@@ -64,11 +71,15 @@ class FlightsManager:
                     dm.update_target_price(
                         fly_to=destination.fly_to, new_price=deal.price)
                 else:
-                    print(
-                        f'AZAIR: No deals to {deal.fly_to} found below the threshold '
-                        f'of {destination.target_price} PLN. Lowest price is {deal.price} PLN')
+                    no_deals_msg = (f"AZAIR: No deals to {deal.fly_to} found below the "
+                                    f"threshold of {destination.target_price} PLN. Lowest price is {deal.price} PLN")
+                    print(no_deals_msg)
+                    log.log_info(no_deals_msg)
             except AttributeError:
-                print(f"AZAIR: No deals to {destination.fly_to} found.")
+                no_flights_msg = f"AZAIR: No deals to {destination.fly_to} found."
+                print(no_flights_msg)
+                log.log_info(no_flights_msg)
         else:
-            print('AZAIR: Failed to retrieve data. Status code:',
-                  response.status_code)
+            no_data_msg = f'AZAIR: Failed to retrieve data. Status code: {response.status_code}'
+            print(no_data_msg)
+            log.log_error(no_data_msg)

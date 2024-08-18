@@ -34,7 +34,7 @@
         "fly_to": "AUH",
         "stay_min": 6,
         "stay_max": 7,
-        "target_price": 800,
+        "target_price": 739,
         "ret_to_diff_city": true,
         "date_from": "01/11/2024",
         "date_to": "25/02/2025"
@@ -42,31 +42,6 @@
     {
         "fly_from": "WRO",
         "fly_to": "ATH",
-        "stay_min": 2,
-        "stay_max": 4,
-        "target_price": 250,
-        "departure_days": [
-            false,
-            false,
-            false,
-            false,
-            false,
-            true,
-            false
-        ],
-        "return_days": [
-            false,
-            true,
-            false,
-            false,
-            false,
-            false,
-            false
-        ]
-    },
-    {
-        "fly_from": "WRO",
-        "fly_to": "CIA",
         "stay_min": 2,
         "stay_max": 4,
         "target_price": 250,
@@ -207,6 +182,31 @@
         "return_days": [
             true,
             false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ]
+    },
+    {
+        "fly_from": "WRO",
+        "fly_to": "DUB",
+        "stay_min": 2,
+        "stay_max": 4,
+        "target_price": 300,
+        "departure_days": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true
+        ],
+        "return_days": [
+            false,
+            true,
             false,
             false,
             false,

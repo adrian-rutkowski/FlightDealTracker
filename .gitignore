@@ -4,3 +4,4 @@ lambda_function.py
 lambda_layer.zip
 aws_deployment.zip
 deployment.py
+logs/
